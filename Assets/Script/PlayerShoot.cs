@@ -44,6 +44,12 @@ public class PlayerShoot : MonoBehaviour
                 Zombie zombie = GameManager.GetZombie(hit.collider.name);
 
                 zombie.TakeDamage(weapon.damage);
+
+                if(zombie.getCurrentHealth() <= 0)
+                {
+                    GameManager.UnregisterZombie(hit.collider.name);
+                    zombie.Death();
+                }
             }
             Debug.Log("Objet touché : " + hit.collider.name);
         }

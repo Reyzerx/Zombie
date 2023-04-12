@@ -11,12 +11,26 @@ public class Zombie : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        GameManager.RegisterZombie("1", GetComponent<Zombie>());
     }
 
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-        Debug.Log(transform.name + "a maintenant " + currentHealth + " point de vies");
+        Debug.Log(transform.name + " a maintenant " + currentHealth + " point de vies");
+    }
+
+    public void Death()
+    {
+        Destroy(this.gameObject);
+    }
+
+    public int getCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public void RegisterZombie(string id)
+    {
+        GameManager.RegisterZombie(id, GetComponent<Zombie>());
     }
 }
