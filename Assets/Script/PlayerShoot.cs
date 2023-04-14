@@ -37,7 +37,7 @@ public class PlayerShoot : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.range, mask))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.range, mask, QueryTriggerInteraction.Ignore))
         {
             if (hit.collider.tag == "Zombie")
             {
