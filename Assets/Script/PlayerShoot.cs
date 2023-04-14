@@ -41,13 +41,19 @@ public class PlayerShoot : MonoBehaviour
         {
             if (hit.collider.tag == "Zombie")
             {
-                Zombie zombie = GameManager.GetZombie(hit.collider.name);
+                Zombie zombie = GameManager.GetZombie(hit.collider.transform.parent.name);
 
-                zombie.TakeDamage(weapon.damage);
+                if(hit.collider.transform.gameObject.layer == LayerMask.NameToLayer("ZombieHead")){
+                    zombie.TakeHeadDamage(weapon.damage);
+                }
+                else if (hit.collider.transform.gameObject.layer == LayerMask.NameToLayer("ZombieBody"))
+                {
+                    zombie.TakeBodyDamage(weapon.damage);
+                }
 
                 if(zombie.getCurrentHealth() <= 0)
                 {
-                    GameManager.UnregisterZombie(hit.collider.name);
+                    GameManager.UnregisterZombie(hit.collider.transform.parent.name);
                     zombie.Death();
                 }
             }

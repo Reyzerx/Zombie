@@ -5,14 +5,14 @@ using UnityEngine.AI;
 
 public class ZombieFollowing : MonoBehaviour
 {
-    public Transform playerTarget;
+    private Transform playerTarget;
 
     public NavMeshAgent navAgent;
 
     // Start is called before the first frame update
     void Start()
     {
-        //playerTarget = GameObject.Find("Player").transform;
+        playerTarget = GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame
@@ -27,15 +27,5 @@ public class ZombieFollowing : MonoBehaviour
     public void following()
     {
         navAgent.SetDestination(playerTarget.position);
-    }
-
-
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if(other.name == "Player")
-        {
-            playerTarget = GameObject.Find("Player").transform;
-        }
     }
 }

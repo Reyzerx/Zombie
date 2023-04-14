@@ -13,9 +13,14 @@ public class Zombie : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int amount)
+    public void TakeBodyDamage(int amount)
     {
         currentHealth -= amount;
+        Debug.Log(transform.name + " a maintenant " + currentHealth + " point de vies");
+    }
+    public void TakeHeadDamage(int amount)
+    {
+        currentHealth -= amount*3;
         Debug.Log(transform.name + " a maintenant " + currentHealth + " point de vies");
     }
 
