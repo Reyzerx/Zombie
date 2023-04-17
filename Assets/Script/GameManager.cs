@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         zombies.Remove(id);
     }
 
-    private void OnGUI()
+    /*private void OnGUI()
     {
         GUILayout.BeginArea(new Rect(200, 200, 200, 500));
         GUILayout.BeginVertical();
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
         GUILayout.EndVertical();
         GUILayout.EndArea();
-    }
+    }*/
 
 
     public static Zombie GetZombie(string zombieId)

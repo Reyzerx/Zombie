@@ -6,6 +6,8 @@ public class SpawnZombie : MonoBehaviour
 {
     private int indexZombie = 0;
 
+    public int nbZombieSpawn;
+
     public GameObject prefabZombie;
 
     public Transform[] spawnPoints;
@@ -21,7 +23,7 @@ public class SpawnZombie : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            SpawnPrefabZombie(2);
+            SpawnPrefabZombie(nbZombieSpawn);
         }
     }
 
