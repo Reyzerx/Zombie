@@ -7,6 +7,7 @@ public class PlayerShoot : MonoBehaviour
 {
     public PlayerWeapon weapon;
     public ParticleSystem flashGun;
+    public PlayerStats playerStats;
 
     [SerializeField]
     private Camera cam;
@@ -16,6 +17,7 @@ public class PlayerShoot : MonoBehaviour
 
     public TMP_Text ammoText;
     public TMP_Text costText;
+    public TMP_Text dollarsText;
 
 
 
@@ -32,6 +34,9 @@ public class PlayerShoot : MonoBehaviour
 
         UpdateUiAmmo();
         costText.enabled = false;
+
+        playerStats = GetComponent<PlayerStats>();
+        dollarsText.text = "0$";
     }
 
     // Update is called once per frame
@@ -47,19 +52,6 @@ public class PlayerShoot : MonoBehaviour
         {
             //Rechargement de l'arme
             Reload();
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            //Rechargement de l'arme
-            IncreaseAmmo(7);
-        }
-
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hitr, 3f))
-        {
-            if (hitr.collider.name == "GunBuy")
-            {
-                costText.enabled = true;
-            }
         }
     }
     private void Shoot()
@@ -90,6 +82,8 @@ public class PlayerShoot : MonoBehaviour
                 if(zombie.getCurrentHealth() <= 0)
                 {
                     GameManager.UnregisterZombie(hit.collider.transform.parent.name);
+                    playerStats.IncreaseDollars(zombie.GetDollarsGiven());
+                    UpdateUiDollars();
                     zombie.Death();
                 }
             }
@@ -121,7 +115,7 @@ public class PlayerShoot : MonoBehaviour
     {
         weapon.ammo--;
     }
-    private void IncreaseAmmo(int amount)
+    public void IncreaseAmmo(int amount)
     {
         if((amount + weapon.munition) > weapon.capacityMunition)
         {
@@ -138,5 +132,10 @@ public class PlayerShoot : MonoBehaviour
     private void UpdateUiAmmo()
     {
         ammoText.text = weapon.ammo + " / " + weapon.munition;
+    }
+
+    public void UpdateUiDollars()
+    {
+        dollarsText.text = playerStats.dollars + "$";
     }
 }

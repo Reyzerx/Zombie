@@ -7,10 +7,13 @@ public class Zombie : MonoBehaviour
 
     private int currentHealth;
 
+    private int dollarsGiven;
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        dollarsGiven = 100;
     }
 
     public void TakeBodyDamage(int amount)
@@ -37,5 +40,10 @@ public class Zombie : MonoBehaviour
     public void RegisterZombie(string id)
     {
         GameManager.RegisterZombie(id, GetComponent<Zombie>());
+    }
+
+    public int GetDollarsGiven()
+    {
+        return dollarsGiven;
     }
 }
