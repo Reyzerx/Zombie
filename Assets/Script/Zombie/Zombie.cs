@@ -3,7 +3,7 @@ using UnityEngine;
 public class Zombie : MonoBehaviour
 {
     [SerializeField]
-    private int maxHealth = 3;
+    private int maxHealth = 5;
 
     private int currentHealth;
 
@@ -45,5 +45,15 @@ public class Zombie : MonoBehaviour
     public int GetDollarsGiven()
     {
         return dollarsGiven;
+    }
+
+    public void setMaxHealth(int amount)
+    {
+        maxHealth = amount;
+    }
+
+    public int getMaxHealth()
+    {
+        return maxHealth;
     }
 }

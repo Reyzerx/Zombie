@@ -23,11 +23,11 @@ public class SpawnZombie : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            SpawnPrefabZombie(nbZombieSpawn);
+            SpawnPrefabZombie(nbZombieSpawn, 5);
         }
     }
 
-    public void SpawnPrefabZombie(int number)
+    public void SpawnPrefabZombie(int number, int health)
     {
         for (int i = 0; i < number; i++)
         {

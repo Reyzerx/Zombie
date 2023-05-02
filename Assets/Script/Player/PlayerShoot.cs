@@ -8,6 +8,7 @@ public class PlayerShoot : MonoBehaviour
     public PlayerWeapon weapon;
     public ParticleSystem flashGun;
     public PlayerStats playerStats;
+    public Vague vague;
 
     [SerializeField]
     private Camera cam;
@@ -85,6 +86,7 @@ public class PlayerShoot : MonoBehaviour
                     playerStats.IncreaseDollars(zombie.GetDollarsGiven());
                     UpdateUiDollars();
                     zombie.Death();
+                    vague.testVagueFinish();
                 }
             }
             Debug.Log("Objet touché : " + hit.collider.name);

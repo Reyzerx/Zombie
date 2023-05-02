@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static Dictionary<string, Zombie> zombies = new Dictionary<string, Zombie>();
+    public static Dictionary<string, Zombie> zombies = new Dictionary<string, Zombie>();
 
     public static void RegisterZombie(string id, Zombie zombie)
     {
