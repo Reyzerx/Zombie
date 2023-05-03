@@ -40,6 +40,7 @@ public class SpawnZombie : MonoBehaviour
             float aleaPosZ = Random.Range(spawnPoint.position.z - 4, spawnPoint.position.z + 4);
 
             GameObject zombie = Instantiate(prefabZombie, new Vector3(aleaPosX, 0.5f, aleaPosZ), Quaternion.identity);
+            zombie.GetComponent<Zombie>().setMaxHealth(health);
             zombie.GetComponent<Zombie>().RegisterZombie(indexZombie.ToString());
         }
     }
