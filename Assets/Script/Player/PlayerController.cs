@@ -28,16 +28,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //Calculer la vélocité du mouvement du joueur
-        float xMov = Input.GetAxisRaw("Horizontal");
-        float zMov = Input.GetAxisRaw("Vertical");
-
-        Vector3 moveHorizontal = transform.right * xMov;
-        Vector3 moveVertical = transform.forward * zMov;
-
-        Vector3 velocity = (moveHorizontal + moveVertical).normalized * speed;
-
-        motor.Move(velocity);
 
         //On calcule la rotation du joueur en un Vector3
         float yRot = Input.GetAxisRaw("Mouse X");
@@ -62,5 +52,19 @@ public class PlayerController : MonoBehaviour
         {
             speed = oldSpeed;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        //Calculer la vélocité du mouvement du joueur
+        float xMov = Input.GetAxisRaw("Horizontal");
+        float zMov = Input.GetAxisRaw("Vertical");
+
+        Vector3 moveHorizontal = transform.right * xMov;
+        Vector3 moveVertical = transform.forward * zMov;
+
+        Vector3 velocity = (moveHorizontal + moveVertical).normalized * speed;
+
+        motor.Move(velocity);
     }
 }
